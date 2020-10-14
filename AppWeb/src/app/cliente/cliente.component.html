@@ -1,0 +1,92 @@
+<div class="container">
+  <mat-toolbar color="accent">
+    <div align="center" style="text-align: right">
+      CADASTRO DE CLIENTE
+    </div>
+  </mat-toolbar>
+  <br /><br />
+
+  <mat-card-content>
+    <form [formGroup]="clienteForm" (ngSubmit)="onFormSubmit()">
+
+      <table>
+        <tr>
+          <td class="tbl1">
+            <mat-form-field class="demo-full-width">
+              <input formControlName="Nome" matTooltip="Informe o nome do Cliente" matInput
+                placeholder="Nome do Cliente" />
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="
+                    !clienteForm.get('Nome').value &&
+                    clienteForm.get('Nome').touched
+                  "></span>
+            </mat-error>
+          </td>
+          <td class="tbl1">
+            <mat-form-field class="demo-full-width">
+              <input formControlName="Documento" matTooltip="Informe o documento" matInput placeholder="CPF / CNPJ" />
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="
+                    !clienteForm.get('Documento').value &&
+                    clienteForm.get('Documento').touched
+                  "></span>
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+
+          <td class="content-center">
+            <button type="reset" mat-raised-button color="accent" matTooltip="Clique no botão Resetar"
+              (click)="cancelarForm()">
+              Cancelar
+            </button>
+          </td>
+
+          <td *ngIf="dataSaved" style="
+                  color: rgb(55, 0, 128);
+                  font-size: 18px;
+                  font-weight: bold;
+                " Class="success" align="left">
+            {{ message }}
+          </td>
+
+          <td class="content-center">
+            <button type="submit" mat-raised-button color="accent" matTooltip="Clique no botão Enviar"
+              [disabled]="!clienteForm.valid">
+              Enviar
+            </button>
+          </td>
+
+        </tr>
+      </table>
+
+      <br /><br />
+
+      <table class="table">
+        <tr ngclass="btn-primary">
+          <th class="tbl2">Ações</th>
+          <th class="tbl2">Nome do Cliente</th>
+          <th class="tbl2">Documento</th>
+        </tr>
+
+        <tr *ngFor="let cliente of clientes | async">
+          <td class="tbl2">
+            <button type="button" class="btn btn-info" matTooltip="Clique no botão para Editar"
+              (click)="carregarCliente(cliente.idCliente)">
+              <i class="fas fa-user-edit"></i>
+            </button>
+            |
+            <button type="button" class="btn btn-danger" matTooltip="Clique no botão para Deletar"
+              (click)="deletarCliente(cliente.idCliente)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+          <td class="tbl2">{{ cliente.nome }}</td>
+          <td class="tbl2">{{ cliente.documento }}</td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</div>

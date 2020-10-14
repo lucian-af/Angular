@@ -1,0 +1,24 @@
+th,
+td {
+  text-align: center;
+}
+th {
+  background-color: #422956;
+  color: white;
+  width: fit-content;
+}
+.tbl1 {
+  width: 400px;
+}
+.tbl2 {
+  width: 400px;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: -40px 5px 10px 0;
+  font-size: 23px;
+  font-style: italic;
+}

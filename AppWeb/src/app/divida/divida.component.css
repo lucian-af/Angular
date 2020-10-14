@@ -1,0 +1,39 @@
+th,
+td {
+  text-align: center;
+}
+th {
+  background-color: #422956;
+  color: white;
+  width: fit-content;
+}
+.tbl1 {
+  width: 400px;
+}
+.tbl2 {
+  width: 400px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  position: fixed;
+  float: left;
+  left: 20px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.label {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  margin: -30px 5px 10px 0;
+  font-size: 15px;
+  font-style: italic;
+}

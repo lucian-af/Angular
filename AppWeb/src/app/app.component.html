@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-toolbar color="accent" style="display: flex; justify-content: space-between;">
+    <div align="center" style="text-align: right">
+      ATUALIZAÇÃO DE DÍVIDAS
+    </div>
+
+    <!-- <div>
+      <img src="/assets/img/logo.png" style="height: 50px;" />
+    </div> -->
+  </mat-toolbar>
+
+  <div class="menu">
+
+    <button routerLink="" type="button" mat-raised-button color="accent"
+      matTooltip="Clique para ir para o Menu principal">
+      Principal
+    </button>
+
+    <button routerLink="./cliente" type="button" mat-raised-button color="accent"
+      matTooltip="Clique para ir para o Cadastro do Cliente">
+      Cliente
+    </button>
+
+    <button routerLink="./divida" type="button" mat-raised-button color="accent"
+      matTooltip="Clique para ir para visualizar as Dívidas">
+      Dívidas
+    </button>
+
+    <button routerLink="./parametro" type="button" mat-raised-button color="accent"
+      matTooltip="Clique para ir para configurar os Parâmetros">
+      Parâmetros
+    </button>
+
+    <button routerLink="./comissao" type="button" mat-raised-button color="accent"
+      matTooltip="Clique para ir para ver as Comissões">
+      Comissões
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</div>

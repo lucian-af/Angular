@@ -1,0 +1,25 @@
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+input {
+  text-transform: uppercase;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  left: 20px;
+}
+
+mat-card-content {
+  padding: 0 10px;
+}
+
+mat-select {
+  padding: 0 5px;
+}
+
+table {
+  width: 100%;
+}
