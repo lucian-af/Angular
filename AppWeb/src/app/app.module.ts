@@ -27,6 +27,8 @@ import { ParametroComponent } from './parametro/parametro.component';
 import { ComissaoComponent } from './comissao/comissao.component';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoginComponent } from './login/login.component';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -35,7 +37,8 @@ registerLocaleData(localePt);
     ClienteComponent,
     DividaComponent,
     ParametroComponent,
-    ComissaoComponent
+    ComissaoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ registerLocaleData(localePt);
     MatInputModule,
     MatTooltipModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [HttpClientModule, HttpClient, ClienteService, MatDatepickerModule],
   bootstrap: [AppComponent]

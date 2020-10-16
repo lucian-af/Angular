@@ -13,24 +13,24 @@
         <tr>
           <td class="tbl1">
             <mat-form-field class="demo-full-width">
-              <input formControlName="Nome" matTooltip="Informe o nome do Cliente" matInput
+              <input formControlName="nome" matTooltip="Informe o nome do Cliente" matInput
                 placeholder="Nome do Cliente" />
             </mat-form-field>
             <mat-error>
               <span *ngIf="
-                    !clienteForm.get('Nome').value &&
-                    clienteForm.get('Nome').touched
+                    !clienteForm.get('nome').value &&
+                    clienteForm.get('nome').touched
                   "></span>
             </mat-error>
           </td>
           <td class="tbl1">
             <mat-form-field class="demo-full-width">
-              <input formControlName="Documento" matTooltip="Informe o documento" matInput placeholder="CPF / CNPJ" />
+              <input formControlName="documento" matTooltip="Informe o documento" matInput placeholder="CPF / CNPJ" />
             </mat-form-field>
             <mat-error>
               <span *ngIf="
-                    !clienteForm.get('Documento').value &&
-                    clienteForm.get('Documento').touched
+                    !clienteForm.get('documento').value &&
+                    clienteForm.get('documento').touched
                   "></span>
             </mat-error>
           </td>
@@ -71,7 +71,7 @@
           <th class="tbl2">Documento</th>
         </tr>
 
-        <tr *ngFor="let cliente of clientes | async">
+        <tr *ngFor="let cliente of clientes">
           <td class="tbl2">
             <button type="button" class="btn btn-info" matTooltip="Clique no botão para Editar"
               (click)="carregarCliente(cliente.idCliente)">
@@ -87,6 +87,12 @@
           <td class="tbl2">{{ cliente.documento }}</td>
         </tr>
       </table>
+
+      <div class="spinner" *ngIf="mostrarSpinner" >
+        <mat-progress-spinner color="warn" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+
     </form>
   </mat-card-content>
 </div>

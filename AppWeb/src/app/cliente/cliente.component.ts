@@ -1,17 +1,21 @@
+import { Lib } from './../../libs/lib';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Cliente } from 'src/models/cliente';
 import { ClienteService } from 'src/services/cliente.service';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select';
 
 @Component({
   selector: 'app-cliente',
   templateUrl: './Cliente.component.html',
-  styleUrls: ['./Cliente.component.css']
+  styleUrls: ['./Cliente.component.css'],
 })
-
 export class ClienteComponent implements OnInit {
-  clientes: Observable<Cliente[]>;
+  mostrarSpinner = true;
+  clientes: Cliente[] = [];
   dataSaved = false;
   clienteForm: any;
   idCliente = null;
@@ -24,19 +28,28 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.clienteForm = this.formbulider.group({
-      Nome: ['', [Validators.required]],
-      Documento: ['', [Validators.required]],
+      nome: ['', [Validators.required]],
+      documento: ['', [Validators.required]],
     });
     this.obterTodosClientes();
   }
 
   obterTodosClientes(): void {
-    this.clientes = this.clienteService.todosClientes();
+    this.clienteService.todosClientes().subscribe((data) => {
+      this.clientes = data;
+      this.mostrarSpinner = false;
+    });
   }
 
   onFormSubmit(): void {
     this.dataSaved = false;
     const cliente = this.clienteForm.value;
+
+    if (!Lib.validarCPF(cliente.documento)) {
+      alert('CPF inválido!');
+      return;
+    }
+
     this.inserirCliente(cliente);
     this.cancelarForm();
   }
@@ -67,8 +80,8 @@ export class ClienteComponent implements OnInit {
       this.message = null;
       this.dataSaved = false;
       this.idCliente = cliente.idCliente;
-      this.clienteForm.controls['Nome'].setValue(cliente.nome);
-      this.clienteForm.controls['Documento'].setValue(cliente.documento);
+      this.clienteForm.controls['nome'].setValue(cliente.nome);
+      this.clienteForm.controls['documento'].setValue(cliente.documento);
     });
   }
 
